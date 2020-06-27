@@ -6,13 +6,13 @@ YYSYY
 YSYSY
 YYSYY
 YYYYY
-의 경우
+의 경우 
 Y**YY
 YY*YY
 Y***Y
 YY*YY
 YYYYY
-의 case를 못 찾음
+의 case를 못 찾음 
 따라서 전체의 경우에서 임의로 7명을 뽑았을 때 칠공주가 될 경우를 찾음.
 */
 
