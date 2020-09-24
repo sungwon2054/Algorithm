@@ -1,0 +1,4 @@
+SELECT COUNT(ANIMAL_ID) FROM ANIMAL_INS
+
+//만약 COUNT(NAME)으로 할시 NULL인 경우는 count가 안되기에 오답이 된다.
+//COUNT(*)는 전체 행의 갯수를 가져옴
