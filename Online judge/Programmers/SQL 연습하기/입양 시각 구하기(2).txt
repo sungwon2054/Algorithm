@@ -1,0 +1,8 @@
+//SET 옆에 변수명과 초기값을 설정 가능
+//@가 붙은 변수는 프로시저가 끝나도 유지
+SET @hour := -1;
+
+SELECT (@hour := @hour + 1),
+(SELECT COUNT(*) FROM ANIMAL_OUTS WHERE HOUR(DATETIME) = @hour)
+FROM ANIMAL_OUTS
+WHERE @hour < 23
