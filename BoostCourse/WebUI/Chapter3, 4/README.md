@@ -5,7 +5,7 @@
 
 <br>
 
-## 3.1. 콘첸츠모델
+## 3.1. 콘텐츠모델
 <img src="https://media.prod.mdn.mozit.cloud/attachments/2012/07/09/3704/07b3e5bb546840a09bb35d45b36009a6/Content_categories_venn.png" height="200">
 
 #### 3.1.1. Metadata
@@ -64,3 +64,135 @@ ex) div, ul, li
 - inline level 요소 : 한 줄에 여러개   
 ex) span, i, img
 <img src="https://lh3.googleusercontent.com/proxy/R-pr6E0i-Naii3YU0NDpDN0BHenZstMMO7haZ8FCQeDzuIREsiQQCjzCDIYXjCoRs-AcDjtjbxLCo-yXWR4weaRzGfAfqJJNuy7yBznTzOcfM8wv2bTht_4xEt5by16LM3tuXJAOnwMlprXlb46R7A" height="200">
+
+<br>
+<br>
+
+# 4. CSS 이해하기
+#### CSS : Cascading Style Sheets
+ - HTML을 꾸며주는 언어
+ - HTML은 __정보__ CSS는 __디자인__
+ 
+ <img src="https://tutorial.techaltum.com/images/html-css.jpg" height=300>
+ 
+ ## 4.1 CSS 문법과 적용
+ 
+ #### 4.1.1 CSS 구문
+ ```CSS
+ h1{
+  color:yellow;
+  font-size:2em;
+ }
+ ```
+- 선택자(selector) -> "h1"
+- 속성(property) -> "color"
+- 값(value) -> "yellow"
+- 선언(declaration) -> "color:yellow", "font-size:2em"
+- 선언부(declaration block) -> "{color:yellow; font-size:2em;}"
+- 규칙(rule set) -> "h1{color:yellow;font-size:2em;}"
+
+##### CSS의 속성(property)과 html의 속성(attribute) 차이가 있다.
+- attribute는 속성을 변경 시킬 수 없음, property는 속성 변경이 가능
+
+#### 4.1.2. CSS 주석
+```CSS
+/* 주석 */
+/*
+ 주석
+ 주석
+*/
+```
+
+#### 4.1.3. CSS의 적용
+- Inline : 해당 요소 안에 직접 선언   
+```html
+<div style="color:red">내용</div>
+```
+- Internal : head안에 <style> 태그를 넣어 사용
+```html
+ <head>
+  <style> div{color:red;}
+  </style>
+ </head>
+```
+- External : 외부시트를 이용   
+ ```html
+ <!--html코드-->
+ <head>
+   <link rel="stylesheet" href="CSS위치.css">
+ </head>
+```
+
+```CSS
+/* CSS 코드 */
+div{color:red;}
+```
+- Import : 스타일 시트 내에서 다른 스타일 시트 불러옴
+```CSS
+ @import url("CSS위치.css");
+```
+
+#### 4.1.4. 선택자 1
+- 요소 선택자 : 선택자 부분에 태그를 넣어줌
+```CSS
+h1{color:red;}
+h2{color:red;}
+```
+- 그룹 선택자 : 선택자를 그룹화함
+```CSS
+h1,h2{color:red;}
+```
+- 전체 선택자 : 문서 내에 모든 요소 선택
+```CSS
+* {color:red;}
+```
+- class 선택자 : 요소에 구애 받지 않고 스타일 규칙 적용   
+또한 class 속성이 여러개 일 수 있음
+```html
+<p class="foo bar">...</p>
+```
+```CSS
+.foo{font-size:10px;}
+.bar{color:blue;}
+```   
+- id 선택자 : class 처럼 id속성에 값을 넣어줌
+```html
+<p id="foo">...</p>
+```
+```CSS
+#foo{font-size:10px;}
+```   
+
+##### id와 class의 차이는 id는 유일해야 하고 구체성의 값이 다름
+#### 4.1.5. 선택자 2
+- 선택자의 조합
+```CSS
+/* p요소이면서 class가 bar */
+p.bar{}
+
+/* class가 foo이면서 bar */
+.foo.bar{}
+
+/* id가 foo이면서 class가 bar */
+#foo.bar{}
+```
+- 단순 속성
+ ```CSS
+ /* p태그이면서 class가 있는 경우 */
+ p[class]{color:white;}
+ /* p태그이면서 class가 있고, id가 있는 경우 */
+ p[class][id]{text-decoration:underline;}
+ ```
+   + 정확한 속성
+ ```CSS
+ /* p태그이면서 classa가 foo인 경우 */
+ p[class="foo"]{color:white;}
+ /* p태그이면서 id가 title인 경우 */
+ p[id="title"]{text-decoration:underline;}
+ ```
+  - 부분 속성값
+   
+    - \[class~="bar"] : 공백으로 구분한 __"bar" 단어가 포함__되는 요소 선택
+    - \[class^="bar"] : "bar"로 __시작__하는 요소 선택
+    - \[class$="bar"] : "bar"로 __끝나는__ 요소 선택
+    - \[class*="bar"] : "bar" __문자가 포함__되는 요소 선택
